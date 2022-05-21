@@ -19,3 +19,10 @@ To support transaction blocks, we have a list of transactionBlocks which keeps t
 When we rollback, we simply pop out the last transactionBlock
 
 When we commit, we simply commit the last transactionBlock, as that has commits from all the previous transactions as well. We also clear out the list here so that we don't store extra space in memory
+
+# UnitTests
+
+The repo contains some unit tests as well, if you want to run them, just uncomment this line in main.py(right now line 46)
+```
+# UnitTests()
+```
