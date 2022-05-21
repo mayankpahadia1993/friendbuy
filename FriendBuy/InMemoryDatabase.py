@@ -17,9 +17,11 @@ class InMemoryDatabase:
 
     def get(self, name):
         if name in self.database:
-            print(self.database[name])
+            out = self.database[name]
         else:
-            print("NULL")
+            out = "NULL"
+        print(out)
+        return out
 
     def unset(self, name):
         if name in self.database:
@@ -28,7 +30,10 @@ class InMemoryDatabase:
             self.database.pop(name)
 
     def numEqualTo(self, value):
-        print(self.valueAnalytics[value])
+        out = self.valueAnalytics[value]
+        print(out)
+        return out
+
 
     def begin(self):
         if self.__checkTransactionBlocks():
@@ -37,11 +42,14 @@ class InMemoryDatabase:
             self.__setCurrDatabase()
 
     def rollback(self):
+        out = ""
         if len(self.transactionBlocks) <= 1:
-            print("NO TRANSACTION")
+            out = "NO TRANSACTION"
+            print(out)
         elif self.__checkTransactionBlocks():
             self.transactionBlocks.pop()
             self.__setCurrDatabase()
+        return out
 
     def commit(self):
         if self.__checkTransactionBlocks():

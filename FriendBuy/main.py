@@ -1,4 +1,5 @@
 from InMemoryDatabase import InMemoryDatabase
+from UnitTests import UnitTests
 
 
 def performCommand(command, database):
@@ -19,7 +20,7 @@ def performCommand(command, database):
     elif inputs[0] == "SET":
         if len(inputs) != 3:
             raise RuntimeError(f"SET - Wrong input given - {command}")
-        database.set(inputs[1], inputs[2])
+        database.set(inputs[1], int(inputs[2]))
         return True
     elif inputs[0] == "GET":
         if len(inputs) != 2:
@@ -34,13 +35,15 @@ def performCommand(command, database):
     elif inputs[0] == "NUMEQUALTO":
         if len(inputs) != 2:
             raise RuntimeError(f"NUMEQUALTO - Wrong input given {command}")
-        database.numEqualTo(inputs[1])
+        database.numEqualTo(int(inputs[1]))
         return True
     else:
         raise RuntimeError(f"Wrong {command} given")
 
 
 if __name__ == '__main__':
+    # Uncomment the line below to run tests
+    # UnitTests()
     inMemoryDatabase = InMemoryDatabase()
     while True:
         inputCommand = input().upper()
